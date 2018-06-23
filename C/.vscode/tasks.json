@@ -6,7 +6,7 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "gcc ${fileBasename} -o outputs\\${fileBasenameNoExtension}.exe -lm",
+            "command": "gcc ${fileBasename} -o outputs\\${fileBasenameNoExtension}.exe -lm -g",
             "group": {
                 "kind": "build",
                 "isDefault": true

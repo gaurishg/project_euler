@@ -5,6 +5,39 @@
 #include<stdio.h>
 #include<math.h>
 
+int string_len(const char *arr)
+{
+    int length=0;
+    for(; arr[length]!=0; ++length);
+    return length;
+}
+
+char* path_name(const char* arr)
+{
+    char *path = malloc(sizeof(char) * (2 * string_len(arr)));
+    int path_pos, arr_pos;
+    for(path_pos = arr_pos = 0; arr[arr_pos]!=0; ++arr_pos)
+    {
+        if(arr[arr_pos] != ',')
+        {
+            path[path_pos++] = arr[arr_pos];
+        }
+        else
+        {
+            #ifdef _WIN32
+            path[path_pos++] = '\\';
+            path[path_pos++] = '\\';
+            #else
+            path[path_pos++] = '/';
+            #endif
+        }
+    }
+    path[path_pos++] = 0;
+
+    return path;
+}
+
+
 long long int hcf(long long int a, long long int b)
 {
     if(a<b)
@@ -81,6 +114,16 @@ int is_prime(long long int n)
         }
         return 1; // True in all other cases.
     }
+}
+
+long long factorial(long long int n)
+{
+    long long int factorial = 1;
+    if(n <= 1)
+        return 1ll;
+    for(int i=1; i<=n; ++i)
+        factorial *= i;
+    return factorial;
 }
 
 #endif // MYFUNCTIONS_H
